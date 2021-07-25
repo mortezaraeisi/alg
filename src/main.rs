@@ -13,15 +13,14 @@ fn main() {
     binary(&collection, &collection_inv);
 }
 
-fn linear<T>(coll: &Vec<T>, inv: &Vec<T>)
-    where T: Ord
-{
+fn linear<T>(coll: &Vec<T>, inv: &[T])
+    where T: Ord {
     assert!(search::linear::find(coll, &coll.last().unwrap()).is_some(), "Should find [linear]");
     assert!(search::linear::find(coll, &inv.last().unwrap()).is_none(), "Should not find [linear]");
 }
 
-fn binary<T>(coll: &Vec<T>, inv: &Vec<T>)
-    where T: Ord {
+fn binary<T>(coll: &Vec<T>, inv: &[T])
+    where T: Ord + Clone {
     assert!(search::binary::find(coll, &coll.last().unwrap()).is_some(), "Should find [binary]");
     assert!(search::binary::find(coll, &inv.last().unwrap()).is_none(), "Should not find [binary]");
 }
